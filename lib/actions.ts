@@ -19,7 +19,11 @@ export async function updateUserData({
   await new Promise<void>((resolve, reject) => {
     setTimeout(() => {
       if (throwError) {
-        reject(new Error("Failed to update user data."))
+        reject(
+          new Error(
+            "Error in server function. Note that next.js will not pass this string to the client in production, because it could contain sensitive details. The purpose here is to help with server-side development not to give hints to the users.",
+          ),
+        )
       } else {
         resolve()
       }

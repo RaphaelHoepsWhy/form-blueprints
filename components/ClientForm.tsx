@@ -36,10 +36,11 @@ export default function DemoForm({}: Props) {
       return { success: true, errorMessage: undefined }
     } catch (error) {
       setPrefilledFormData(formData)
-      if (error instanceof Error) {
-        return { success: false, errorMessage: error.toString() }
+      console.error(error)
+      return {
+        success: false,
+        errorMessage: "Sorry, this did not work :( Please try again", // message ment to be shown to the user in the UI. Usually non technical.
       }
-      return { success: false, errorMessage: "An unexpected error occurred" }
     }
   }
 
