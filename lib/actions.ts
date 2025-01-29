@@ -3,11 +3,11 @@
 export interface UserData {
   name: string
   email: string
-  throwError?: boolean
   phone?: string
+  throwError?: boolean
 }
 
-// Dummy call to an API. Use secret keys from process.env etc.
+// Dummy function to simulate a call to an API. You can use sensitive data, like keys from process.env etc. here
 export async function updateUserData({
   name,
   email,
