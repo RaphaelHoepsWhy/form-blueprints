@@ -1,0 +1,12 @@
+{
+  "extends": ["next/core-web-vitals", "plugin:tailwindcss/recommended"],
+  "settings": {
+    "tailwindcss": {
+      "callees": ["classnames", "cn", "cva"]
+    }
+  },
+  "rules": {
+    "tailwindcss/no-custom-classname": ["warn", { "whitelist": [] }],
+    "no-console": ["warn", { "allow": ["error"] }]
+  }
+}
