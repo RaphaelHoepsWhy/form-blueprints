@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useActionState } from "react"
+import React, { useActionState, useState } from "react"
 import { InputWithLabel } from "./ui/compounds/InputWithLabel"
 import ButtonWithLoader from "./ui/compounds/ButtonWithLoader"
 import Form from "next/form"
@@ -17,6 +17,8 @@ interface ActionState {
 }
 
 export default function DemoForm({}: Props) {
+  const [prefilledFormData, setPrefilledFormData] = useState<FormData>() // Only relevant to control the form data to be filled after a formAction completes
+
   async function submitUserData(
     _currentStateeee: ActionState,
     formData: FormData,
@@ -30,8 +32,10 @@ export default function DemoForm({}: Props) {
 
     try {
       await updateUserData(user)
+      setPrefilledFormData(undefined)
       return { success: true, errorMessage: undefined }
     } catch (error) {
+      setPrefilledFormData(formData)
       if (error instanceof Error) {
         return { success: false, errorMessage: error.toString() }
       }
@@ -53,24 +57,31 @@ export default function DemoForm({}: Props) {
         className="flex w-full max-w-[300px] flex-col gap-4"
         action={formAction}
       >
-        <InputWithLabel name="name" label="Name" required />
+        <InputWithLabel
+          name="name"
+          label="Name"
+          required
+          defaultValue={(prefilledFormData?.get("name") as string) || ""}
+        />
         <InputWithLabel
           name="email"
           label="Email"
           type="email"
           autoComplete="email"
           required
+          defaultValue={(prefilledFormData?.get("email") as string) || ""}
         />
         <InputWithLabel
           name="phone"
           label="Phone"
           type="tel"
           autoComplete="tel"
+          defaultValue={(prefilledFormData?.get("phone") as string) || ""}
         />
         <CheckboxWithLabel
           name="throwError"
           id="throwError"
-          label={"I accept that this request will throw an error"}
+          label={"I agree to server errors"}
         />
 
         <ButtonWithLoader type="submit" className="mt-1" isLoading={isPending}>

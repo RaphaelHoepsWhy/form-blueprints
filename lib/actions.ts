@@ -7,6 +7,7 @@ export interface UserData {
   phone?: string
 }
 
+// Dummy call to an API. Use secret keys from process.env etc.
 export async function updateUserData({
   name,
   email,
@@ -14,6 +15,7 @@ export async function updateUserData({
   throwError,
 }: UserData): Promise<void> {
   console.log(`Processing userData on the server: ${name}, ${email}, ${phone}`)
+
   await new Promise<void>((resolve, reject) => {
     setTimeout(() => {
       if (throwError) {
