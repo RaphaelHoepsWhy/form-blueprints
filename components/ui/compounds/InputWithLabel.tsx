@@ -29,7 +29,7 @@ const InputWithLabel = React.forwardRef<HTMLInputElement, Props>(
     return (
       <div
         className={cn(
-          "relative mt-1 grid w-full max-w-[300px] grid-cols-1 grid-rows-1 items-start",
+          "relative mt-1 grid w-full grid-cols-1 grid-rows-1 items-start",
           className,
         )}
       >
@@ -61,6 +61,6 @@ const InputWithLabel = React.forwardRef<HTMLInputElement, Props>(
   },
 )
 
-InputWithLabel.displayName = "InputWithCompactLabel"
+InputWithLabel.displayName = "InputWithLabel"
 
-export { InputWithLabel as InputWithCompactLabel }
+export { InputWithLabel }
