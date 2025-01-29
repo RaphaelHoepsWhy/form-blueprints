@@ -36,10 +36,11 @@ export default function DemoForm({}: Props) {
       return { success: true, errorMessage: undefined }
     } catch (error) {
       setPrefilledFormData(formData)
-      console.error(error)
+      console.error(error) // will log the server error, but only in dev mode. See comment in updateUserData()
       return {
         success: false,
-        errorMessage: "Sorry, this did not work :( Please try again", // message ment to be shown to the user in the UI. Usually non technical.
+        // message ment to be shown to the user in the UI. Usually non technical. The UI should still look good with this
+        errorMessage: "Sorry, this did not work :( Please try again.",
       }
     }
   }

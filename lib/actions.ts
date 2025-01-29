@@ -20,9 +20,10 @@ export async function updateUserData({
     setTimeout(() => {
       if (throwError) {
         reject(
-          new Error(
-            "Error in server function. Note that next.js will not pass this string to the client in production, because it could contain sensitive details. The purpose here is to help with server-side development not to give hints to the users.",
-          ),
+          // Note that next.js will not pass this error message to the client in production, because it could contain sensitive details.
+          // The purpose of this message is to provide technical details to help with server-side development.
+          // Showing a meaningful message to the user is the UI component's responsibility .
+          new Error("Error in server function."),
         )
       } else {
         resolve()
