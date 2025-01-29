@@ -90,7 +90,9 @@ export default function DemoForm({}: Props) {
           Submit
         </ButtonWithLoader>
         {state.success && (
-          <span className="text-sm text-green-700">Success: Data updated</span>
+          <span className="text-sm text-green-700">
+            Thank you! Yor data has been submitted
+          </span>
         )}
         {state.errorMessage && (
           <span className="text-sm text-red-700">{state.errorMessage}</span>
